@@ -16,5 +16,8 @@
     "url": "git@github.com:andrewjmead/global-npm-seed.git"
   },
   "author": "Andrew Mead",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "optimist": "~0.3.5"
+  }
 }
