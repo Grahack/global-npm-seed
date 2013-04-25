@@ -1,6 +1,6 @@
 # Global NPM Seed Project
 
-This is a tutorial and a template for creating your own CLI with node!
+This is a tutorial and a template for creating your own CLI with node! You can also checkout the [final npm module](https://npmjs.org/package/global-npm-seed).
 
 ## Getting Setup
 
@@ -82,16 +82,16 @@ This is telling npm to install the module location in the current directory as a
 Now you can test the module by running
 ```
 > hello
-"Hello World!"
+Hello World!
 ```
 
-## Adding Support For Argument
+## Adding Support For Arguments
 
 Our module is cool, but lets add a optional command-line argument to personalize the greeting. Adding support for --name=myname will do just that.
 
-To do this, we are going to add a dependency to *package.json*
+To do this, we are going to add a dependency to *package.json*. You can run ```npm install --save optimist``` to install the module and add it as a dependency.
 
-### package.json
+### package.json (veresion number may vary)
 ```
 {
   ...
@@ -108,7 +108,7 @@ To do this, we are going to add a dependency to *package.json*
 
 In our main file, we now need to parse the command-line arguments.
 
-## ./lib/hello.js
+### ./lib/hello.js
 ```
 var argv = require('optimist').argv;
 
@@ -117,20 +117,20 @@ conosle.log('Hello ' + (argv.name || 'World') + '!');
 
 Now we check to see if the user provided a name. If they did, we greet them with their name, else we greet them with our generic message.
 
-## Reinstalling
+### Reinstalling
 
 Run ```npm install -g ./``` to reinstall the module. This time, optimist is also going to be installed. Now you should be able to run hello with the name argument.
 
 ```
 > hello
-Hello World
+Hello World!
 ```
 ```
 > hello --name=Andrew
 Hello Andrew!
 ```
 
-### Questions?
+## Questions?
 
 If you have a question, open an issue. I would love to help you setup your first command-line interface!
 
