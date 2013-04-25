@@ -67,7 +67,7 @@ This is the file that is going to be executed by our terminal. We need it to do 
 require('./../lib/hello.js');
 ```
 
-Line one is a [shebang](http://en.wikipedia.org/wiki/Shebang_(Unix). Line two is a require statement that requires our main file which will be executed. We now have all the pieces in place to test our CLI.
+Line one is a [shebang](http://en.wikipedia.org/wiki/Shebang_(Unix)). Line two is a require statement that requires our main file which will be executed. We now have all the pieces in place to test our CLI.
 
 ## Installing Your Module
 
