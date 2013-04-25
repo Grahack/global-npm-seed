@@ -6,7 +6,9 @@ This is a tutorial and a template for creating your own CLI with node!
 
 Make sure that you have node and npm installed.
 
-Start by creating an empty directory and navigate to it in your terminal. Run ```npm init``` which will ask you a couple of questions about the module that you are building, such as name, versions, repository and author. Once it has all the information, it will compile it into *package.json*, which stores other inforamtion such as dependencies.
+Start by creating an empty directory and navigate to it in your terminal. Run ```npm init``` which will ask you a couple of questions about the module that you are building such as name, versions, repository and author. You can use the default values for all of these, or enter some real data if you want.
+
+Once it has all the information, it will compile it into *package.json*. *package.json* holds other data and metadata to identify and install your module.
 
 ## Modifying Package.json
 
