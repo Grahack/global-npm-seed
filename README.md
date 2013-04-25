@@ -40,3 +40,94 @@ For this demo, we want users to be able to run ```hello``` from the terminal, so
   ...
 }
 ```
+
+## Our "Main" File
+
+Create a directory called *lib* in your modules folder, and create *hello.js* inside of it. This file is going to contain all of our functionality. For now, it will display "Hello World!".
+
+### ./lib/hello.js
+```
+console.log('Hello World!');
+```
+
+We have our file ready to go, we still need to link the terminal and this file by modifying *./bin/hello*
+
+## Linking
+
+This is the file that is going to be executed by our terminal. We need it to do two things:
+
+1. Use a shebang to parse the contents as node.js code
+2. Execute the contents of *./lib/hello.js*
+
+### ./lib/hello.js
+```
+#!/usr/bin/env node
+require('./../lib/hello.js');
+```
+
+Line one is a [shebang](http://en.wikipedia.org/wiki/Shebang_(Unix)). Line two is a require statement that requires our main file which will be executed. We now have all the pieces in place to test our CLI.
+
+## Installing Your Module
+
+Navigate to your projects root directory, and exectute:
+
+```
+npm install -g ./
+```
+
+This is telling npm to install the module location in the current directory as a global module, which is exactly what we want. ```-g``` is a flag that specifies that the module should be installed globally.
+
+Now you can test the module by running
+```
+> hello
+"Hello World!"
+```
+
+## Adding Support For Argument
+
+Our module is cool, but lets add a optional command-line argument to personalize the greeting. Adding support for --name=myname will do just that.
+
+To do this, we are going to add a dependency to *package.json*
+
+### package.json
+```
+{
+  ...
+  "dependencies": {
+    "optimist": "~0.3.5"
+  }
+  ...
+}
+```
+
+[Optimist](https://github.com/substack/node-optimist) is a node module that helps parse command-line arguments. Now that it is included in out dependencies, npm will install optimist whenever somebody installs our module.
+
+### Modifying ./lib/hello.js
+
+In our main file, we now need to parse the command-line arguments.
+
+## ./lib/hello.js
+```
+var argv = require('optimist').argv;
+
+conosle.log('Hello ' + (argv.name || 'World') + '!');
+```
+
+Now we check to see if the user provided a name. If they did, we greet them with their name, else we greet them with our generic message.
+
+## Reinstalling
+
+Run ```npm install -g ./``` to reinstall the module. This time, optimist is also going to be installed. Now you should be able to run hello with the name argument.
+
+```
+> hello
+Hello World
+```
+```
+> hello --name=Andrew
+Hello Andrew!
+```
+
+### Questions?
+
+If you have a question, open an issue. I would love to help you setup your first command-line interface!
