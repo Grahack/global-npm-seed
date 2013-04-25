@@ -1,6 +1,6 @@
 {
   "name": "global-npm-seed",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An npm seed project for a command line interface",
   "main": "./lib/hello.js",
   "scripts": {
