@@ -1,7 +1,7 @@
 {
   "name": "global-npm-seed",
   "version": "0.1.0",
-  "description": "npm seed project for a command line interface",
+  "description": "An npm seed project for a command line interface",
   "main": "./lib/hello.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
