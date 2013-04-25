@@ -61,7 +61,7 @@ This is the file that is going to be executed by our terminal. We need it to do 
 1. Use a shebang to parse the contents as node.js code
 2. Execute the contents of *./lib/hello.js*
 
-### ./lib/hello.js
+### ./bin/hello
 ```
 #!/usr/bin/env node
 require('./../lib/hello.js');
