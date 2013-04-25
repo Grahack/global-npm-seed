@@ -1,13 +1,13 @@
 {
   "name": "global-npm-seed",
-  "version": "0.0.9",
-  "description": "A seed project for a global npm module.",
+  "version": "0.1.0",
+  "description": "npm seed project for a command line interface",
   "main": "./lib/hello.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": {
-    "hello": "./bin/hello"
+  "directories": {
+		"bin": "./bin"
   },
   "preferGlobal": "true",
   "repository": {
