@@ -28,9 +28,9 @@ The first property to add is ```preferGlobal```. preferGloabl is a handy little 
 
 ### Directories Property
 
-The directories property is the one that makes this all work. By setting *directories.bin*, we are telling npm which file or directory contains the files to be added to the system PATH.
+The ```directories``` property is the one that makes this all work. By setting ```directories.bin```, we are telling npm which file or directory contains the files to be added to the system PATH.
 
-For this demo, we want users to be able to run ```hello``` from the terminal, so I need to create a new directory *bin* and create a file called *hello* in it.
+For this demo, we want users to be able to run ```hello``` from the terminal, so I need to create a new directory *bin* and create a file called *hello* in it. Then add the ```directories``` property to *package.json*. Now when our module is installed the user will be able to access ./bin/hello from the terminal.
 
 ```
 {
