@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,52 +16,158 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Global-npm-seed</h1>
-        <p>Learn to create a global npm module with a CLI interface.</p>
-
-        <p class="view"><a href="https://github.com/andrewjmead/global-npm-seed">View the Project on GitHub <small>andrewjmead/global-npm-seed</small></a></p>
-
+        <h1 class="header">Global-npm-seed</h1>
+        <p class="header">Learn to create a global npm module with a CLI interface.</p>
 
         <ul>
-          <li><a href="https://github.com/andrewjmead/global-npm-seed/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/andrewjmead/global-npm-seed/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/andrewjmead/global-npm-seed">View On <strong>GitHub</strong></a></li>
+          <li class="download"><a class="buttons" href="https://github.com/andrewjmead/global-npm-seed/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/andrewjmead/global-npm-seed/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/andrewjmead/global-npm-seed">View On GitHub</a></li>
         </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/andrewjmead">andrewjmead</a></p>
+
+
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>Global NPM Seed Project</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>This is a tutorial and a template for creating your own CLI with node! You can also checkout the <a href="https://npmjs.org/package/global-npm-seed">final npm module</a>.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<h2>Getting Setup</h2>
+
+<p>Make sure that you have node and npm installed.</p>
+
+<p>Start by creating an empty directory and navigate to it in your terminal. Run <code>npm init</code> which will ask you a couple of questions about the module that you are building such as name, versions, repository and author. You can use the default values for all of these, or enter some real data if you want.</p>
+
+<p>Once it has all the information, it will compile it into <em>package.json</em>. <em>package.json</em> holds other data and metadata to identify and install your module.</p>
+
+<h2>Modifying Package.json</h2>
+
+<p>We need to make a couple of changes to <em>package.json</em> to get started.</p>
+
+<h3>Prefer Global</h3>
+
+<p>The first property to add is <code>preferGlobal</code>. preferGloabl is a handy little property that tell npm this module is intended to be used from the terminal. If a user tries to install the module locally, npm will warn them that the package is intended for global installation.</p>
+
+<pre><code>{
+  ...
+  "preferGlobal": "true",
+  ...
+}
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h3>Directories Property</h3>
 
-<h3>Designer Templates</h3>
+<p>The <code>directories</code> property is the one that makes this all work. By setting <code>directories.bin</code>, we are telling npm which file or directory contains the files to be added to the system PATH.</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>For this demo, we want users to be able to run <code>hello</code> from the terminal, so I need to create a new directory <em>bin</em> and create a file called <em>hello</em> in it. Then add the <code>directories</code> property to <em>package.json</em>. Now when our module is installed the user will be able to access ./bin/hello from the terminal.</p>
 
-<h3>Rather Drive Stick?</h3>
+<pre><code>{
+  ...
+  "preferGlobal": "true",
+  "directories": {
+    "bin": "./bin"
+  },
+  ...
+}
+</code></pre>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h2>Our "Main" File</h2>
 
-<h3>Authors and Contributors</h3>
+<p>Create a directory called <em>lib</em> in your modules folder, and create <em>hello.js</em> inside of it. This file is going to contain all of our functionality. For now, it will display "Hello World!".</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h3>./lib/hello.js</h3>
 
-<h3>Support or Contact</h3>
+<pre><code>console.log('Hello World!');
+</code></pre>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>We have our file ready to go, we still need to link the terminal and this file by modifying <em>./bin/hello</em></p>
+
+<h2>Linking</h2>
+
+<p>This is the file that is going to be executed by our terminal. We need it to do two things:</p>
+
+<ol>
+<li>Use a shebang to parse the contents as node.js code</li>
+<li>Execute the contents of <em>./lib/hello.js</em>
+</li>
+</ol><h3>./bin/hello</h3>
+
+<pre><code>#!/usr/bin/env node
+require('./../lib/hello.js');
+</code></pre>
+
+<p>Line one is a <a href="http://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a>. Line two is a require statement that requires our main file which will be executed. We now have all the pieces in place to test our CLI.</p>
+
+<h2>Installing Your Module</h2>
+
+<p>Navigate to your projects root directory, and exectute:</p>
+
+<pre><code>npm install -g ./
+</code></pre>
+
+<p>This is telling npm to install the module location in the current directory as a global module, which is exactly what we want. <code>-g</code> is a flag that specifies that the module should be installed globally.</p>
+
+<p>Now you can test the module by running</p>
+
+<pre><code>&gt; hello
+Hello World!
+</code></pre>
+
+<h2>Adding Support For Arguments</h2>
+
+<p>Our module is cool, but lets add a optional command-line argument to personalize the greeting. Adding support for --name=myname will do just that.</p>
+
+<p>To do this, we are going to add a dependency to <em>package.json</em>. You can run <code>npm install --save optimist</code> to install the module and add it as a dependency.</p>
+
+<h3>package.json (veresion number may vary)</h3>
+
+<pre><code>{
+  ...
+  "dependencies": {
+    "optimist": "~0.3.5"
+  }
+  ...
+}
+</code></pre>
+
+<p><a href="https://github.com/substack/node-optimist">Optimist</a> is a node module that helps parse command-line arguments. Now that it is included in out dependencies, npm will install optimist whenever somebody installs our module.</p>
+
+<h3>Modifying ./lib/hello.js</h3>
+
+<p>In our main file, we now need to parse the command-line arguments.</p>
+
+<h3>./lib/hello.js</h3>
+
+<pre><code>var argv = require('optimist').argv;
+
+conosle.log('Hello ' + (argv.name || 'World') + '!');
+</code></pre>
+
+<p>Now we check to see if the user provided a name. If they did, we greet them with their name, else we greet them with our generic message.</p>
+
+<h3>Reinstalling</h3>
+
+<p>Run <code>npm install -g ./</code> to reinstall the module. This time, optimist is also going to be installed. Now you should be able to run hello with the name argument.</p>
+
+<pre><code>&gt; hello
+Hello World!
+</code></pre>
+
+<pre><code>&gt; hello --name=Andrew
+Hello Andrew!
+</code></pre>
+
+<h2>Questions?</h2>
+
+<p>If you have a question, open an issue. I would love to help you setup your first command-line interface!</p>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/andrewjmead">andrewjmead</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
