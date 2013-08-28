@@ -134,4 +134,6 @@ Hello Andrew!
 
 If you have a question, open an issue. I would love to help you setup your first command-line interface!
 
+[Andrew Mead](http://www.andrewjmead.com)
+
 [1]: http://en.wikipedia.org/wiki/Shebang_(Unix)
