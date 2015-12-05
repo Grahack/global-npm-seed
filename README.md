@@ -16,7 +16,7 @@ We need to make a couple of changes to *package.json* to get started.
 
 ### Prefer Global
 
-The first property to add is ```preferGlobal```. preferGloabl is a handy little property that tell npm this module is intended to be used from the terminal. If a user tries to install the module locally, npm will warn them that the package is intended for global installation.
+The first property to add is ```preferGlobal```. preferGlobal is a handy little property that tell npm this module is intended to be used from the terminal. If a user tries to install the module locally, npm will warn them that the package is intended for global installation.
 
 ```
 {
